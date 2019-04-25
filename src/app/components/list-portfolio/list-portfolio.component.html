@@ -1,0 +1,30 @@
+<br>
+<h3>Hedge Funds</h3>
+<br>
+<h2>Portfolio List</h2>
+<div class="container">
+  <table class="table table-striped">
+    <thead>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Budget</th>
+      <th>Owner</th>
+      <th>Projects</th>
+      <th>Operations</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let portfolio of portfolios">
+        <td>{{portfolio.id}}</td>
+        <td>{{portfolio.name}}</td>
+        <td>{{portfolio.budget}}</td>
+        <td>{{portfolio.owner}}</td>
+        <td>{{portfolio.projects[0].id}}, {{portfolio.projects[0].name}}</td>
+        <td>
+          <button class="btn btn-danger" (click)="deleteDonation(donation)">Delete</button>&nbsp; &nbsp;
+          <button class="btn btn-primary" (click)="updateDonation(donation)">Edit</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <td><button class="btn btn-primary" (click)="createDonation()">New Portfolio</button></td>
+</div>
