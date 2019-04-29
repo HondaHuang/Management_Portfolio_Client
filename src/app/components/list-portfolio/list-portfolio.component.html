@@ -18,13 +18,14 @@
         <td>{{portfolio.name}}</td>
         <td>{{portfolio.budget}}</td>
         <td>{{portfolio.owner}}</td>
-        <td>{{portfolio.projects[0].id}}, {{portfolio.projects[0].name}}</td>
+        <td>{{portfolio.projects}}</td>
         <td>
-          <button class="btn btn-danger" (click)="deleteDonation(donation)">Delete</button>&nbsp; &nbsp;
-          <button class="btn btn-primary" (click)="updateDonation(donation)">Edit</button>
+          <button class="btn btn-danger" (click)="deleteproject(project)">Delete</button>&nbsp; &nbsp;
+          <button class="btn btn-primary" (click)="updateproject(project)">Edit</button>&nbsp; &nbsp;
+          <button class="btn btn-success" (click)="viewProject(portfolio)">View Project(s)</button>
         </td>
       </tr>
     </tbody>
   </table>
-  <td><button class="btn btn-primary" (click)="createDonation()">New Portfolio</button></td>
+  <td><button class="btn btn-primary" (click)="createproject()">New Portfolio</button></td>
 </div>

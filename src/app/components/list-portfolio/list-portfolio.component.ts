@@ -21,4 +21,9 @@ export class ListPortfolioComponent implements OnInit {
     })
   }
 
+  viewProject(portfolio) {
+    this._service.setter(portfolio);
+    this._router.navigate(['/project']);
+  }
+
 }

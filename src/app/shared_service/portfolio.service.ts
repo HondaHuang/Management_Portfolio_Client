@@ -20,4 +20,15 @@ export class PortfolioService {
   getPortfolios() {
     return this._http.get(this.baseUrl+'/portfolios',options)
   }
+
+
+  setter(portfolio:Portfolio) {
+    this.portfolio=portfolio;
+  }
+
+  getter() {
+    return this.portfolio;
+  }
+
+
 }

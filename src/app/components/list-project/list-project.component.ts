@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { PortfolioService } from 'src/app/shared_service/portfolio.service';
+import { Portfolio } from 'src/app/classes/portfolio';
+import { Project } from 'src/app/classes/project';
 
 @Component({
   selector: 'app-list-project',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListProjectComponent implements OnInit {
 
-  constructor() { }
+  public portfolios:Portfolio;
+  public projects:Project[];
+
+  constructor(private _service:PortfolioService) { }
 
   ngOnInit() {
+    this.portfolios = this._service.getter();
+    this.projects = Object.assign([], this.portfolios.projects);
+   // console.log(this.portfolios.projects);
+    console.log("Projects");
+    console.log(this.projects);
   }
 
 }
