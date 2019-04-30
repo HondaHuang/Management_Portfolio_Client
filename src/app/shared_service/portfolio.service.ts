@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Portfolio } from '../classes/portfolio';
+import { Project } from '../classes/project';
 
 let headers = new HttpHeaders().set('Content-Type','application/json');
 let options ={
@@ -13,6 +14,7 @@ let options ={
 export class PortfolioService {
   private baseUrl:string='http://localhost:8400/api';
   public portfolio = new Portfolio();
+  public project = new Project();
 
   constructor(private _http:HttpClient) { }
 
@@ -30,5 +32,12 @@ export class PortfolioService {
     return this.portfolio;
   }
 
+  setterProject(project:Project){
+    this.project = project;
+  }
+
+  getterProject(){
+    return this.project;
+  }
 
 }
