@@ -1,0 +1,80 @@
+<div class="col-md-6 user-container">
+  <h2 class="text-center">Add Project</h2>
+  <form [formGroup]="addProjectForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" formControlName="name" placeholder="name" name="name" class="form-control" id="name">
+    </div>
+
+    <div class="form-group">
+      <label for="type">Type:</label>
+      <input type="text" formControlName="type" placeholder="type" name="type" class="form-control" id="type">
+    </div>
+
+    <div class="form-group">
+      <label for="start">Start Date:</label>
+      <input type="date" formControlName="start" placeholder="start date" name="start" class="form-control" id="start">
+    </div>
+
+    <div class="form-group">
+      <label for="end">End Date:</label>
+      <input type="date" formControlName="end" placeholder="end date" name="end" class="form-control" id="end">
+    </div>
+
+    <div class="form-group">
+      <label for="duration">Duration:</label>
+      <input type="number" formControlName="duration" placeholder="duration" name="duration" class="form-control"
+        id="duration">
+    </div>
+
+    <div class="form-group">
+      <label for="status">Status:</label>
+      <input type="text" formControlName="status" placeholder="status" name="status" class="form-control" id="status">
+    </div>
+
+    <div class="form-group">
+      <label for="methodology">Methodology:</label>
+      <input type="text" formControlName="methodology" placeholder="methodology" name="methodology" class="form-control"
+        id="methodology">
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description:</label>
+      <input type="textbox" formControlName="description" placeholder="description" name="description"
+        class="form-control" id="description">
+    </div>
+
+    <div class="form-group">
+      <label for="tools">Tools:</label>
+      <input type="text" formControlName="tools" placeholder="tools" name="tools" class="form-control" id="tools">
+    </div>
+
+    <div class="form-group">
+      <label for="pm">PM:</label>
+      <input type="text" formControlName="pm" placeholder="pm" name="pm" class="form-control" id="pm">
+    </div>
+
+    <div class="form-group">
+      <label for="dm">DM:</label>
+      <input type="text" formControlName="dm" placeholder="dm" name="dm" class="form-control" id="dm">
+    </div>
+
+    <div class="form-group">
+      <label for="client">Client:</label>
+      <input type="text" formControlName="client" placeholder="client" name="client" class="form-control" id="client">
+    </div>
+
+    <div class="form-group">
+      <label for="budget">Budget:</label>
+      <input type="number" formControlName="budget" placeholder="budget" name="budget" class="form-control" id="budget">
+    </div>
+
+    <div class="form-group">
+      <label for="effort">Effort:</label>
+      <input type="number" formControlName="effort" placeholder="effort" name="effort" class="form-control" id="effort">
+    </div>
+
+    <button class="btn btn-success">Create</button>
+  </form>
+  <br><br>
+</div>

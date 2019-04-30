@@ -3,40 +3,45 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Portfolio } from '../classes/portfolio';
 import { Project } from '../classes/project';
 
-let headers = new HttpHeaders().set('Content-Type','application/json');
-let options ={
-  headers:headers
+let headers = new HttpHeaders().set('Content-Type', 'application/json');
+let options = {
+  headers: headers
 }
 
 @Injectable({
   providedIn: 'root'
 })
 export class PortfolioService {
-  private baseUrl:string='http://localhost:8400/api';
+  private baseUrl: string = 'http://localhost:8400/api';
   public portfolio = new Portfolio();
   public project = new Project();
 
-  constructor(private _http:HttpClient) { }
+  constructor(private _http: HttpClient) { }
 
 
   getPortfolios() {
-    return this._http.get(this.baseUrl+'/portfolios',options)
+    return this._http.get(this.baseUrl + '/portfolios', options)
+  }
+
+  createProject(portfolio: Portfolio, project: Project) {
+    portfolio.projects.push(project);
+    return this._http.put(this.baseUrl + '/portfolioproject', JSON.stringify(portfolio), options)
   }
 
 
-  setter(portfolio:Portfolio) {
-    this.portfolio=portfolio;
+  setter(portfolio: Portfolio) {
+    this.portfolio = portfolio;
   }
 
   getter() {
     return this.portfolio;
   }
 
-  setterProject(project:Project){
+  setterProject(project: Project) {
     this.project = project;
   }
 
-  getterProject(){
+  getterProject() {
     return this.project;
   }
 

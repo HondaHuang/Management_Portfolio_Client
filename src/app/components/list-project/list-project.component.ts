@@ -28,4 +28,9 @@ export class ListProjectComponent implements OnInit {
     this._router.navigate(['/more'])
   }
 
+  createproject(portfolio){
+    this._service.setter(portfolio);
+    this._router.navigate(['/createproject'])
+  }
+
 }
