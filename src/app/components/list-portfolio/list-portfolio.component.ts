@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PortfolioService } from 'src/app/shared_service/portfolio.service';
 import { Router } from '@angular/router';
 import { Portfolio } from 'src/app/classes/portfolio';
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-list-portfolio',
@@ -10,9 +11,11 @@ import { Portfolio } from 'src/app/classes/portfolio';
 })
 export class ListPortfolioComponent implements OnInit {
 
+addPortfolioForm: FormGroup;
+
   public portfolios:Portfolio[];
 
-  constructor(private _service:PortfolioService, private _router:Router) { }
+  constructor(private formBuilder: FormBuilder, private _service:PortfolioService, private _router:Router) { }
 
   ngOnInit() {
     this._service.getPortfolios().subscribe((res:any[])=> {

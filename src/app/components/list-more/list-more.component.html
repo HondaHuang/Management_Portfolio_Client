@@ -1,0 +1,54 @@
+<br>
+<h3>Hedge Funds</h3>
+<br>
+<h2>ClientPOC List</h2>
+<div class="container">
+  <table class="table table-striped">
+    <thead>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Email</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let clientpoc of clientpocs">
+          <td>{{clientpoc.id}}</td>
+          <td>{{clientpoc.name}}</td>
+          <td>{{clientpoc.email}}</td>
+          <td>
+            <button class="btn btn-danger" (click)="deleteproject(project)">Delete</button>&nbsp; &nbsp;
+            <button class="btn btn-primary" (click)="updateproject(project)">Edit</button>&nbsp; &nbsp;
+            <button class="btn btn-success" (click)="viewMore(project)">View More</button>
+          </td>
+        </tr>
+      </tbody>
+  </table>
+  <br>
+  <td><button class="btn btn-primary" (click)="createclientpoc()">New ClientPOC</button></td>
+</div>
+<br>
+<h2>Consultant List</h2>
+<div class="container">
+  <table class="table table-striped">
+    <thead>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Role</th>
+      <th>Duration</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let consultant of consultants">
+          <td>{{consultant.id}}</td>
+          <td>{{consultant.name}}</td>
+          <td>{{consultant.role}}</td>
+          <td>{{consultant.duration}}</td>
+          <td>
+            <button class="btn btn-danger" (click)="deleteproject(project)">Delete</button>&nbsp; &nbsp;
+            <button class="btn btn-primary" (click)="updateproject(project)">Edit</button>&nbsp; &nbsp;
+            <button class="btn btn-success" (click)="viewMore(project)">View More</button>
+          </td>
+        </tr>
+      </tbody>
+  </table>
+  <br>
+  <td><button class="btn btn-primary" (click)="createconsultant()">New Consultant</button></td>
+</div>
