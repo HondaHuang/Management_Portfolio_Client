@@ -28,7 +28,7 @@ addPortfolioForm: FormGroup;
     this._service.setter(portfolio);
     this._router.navigate(['/project']);
   }
-
+  
   createPortfolio(){
     let portfolio = new Portfolio();
     this._service.setter(portfolio);
@@ -39,7 +39,7 @@ addPortfolioForm: FormGroup;
     this._service.setter(portfolio);
     this._router.navigate(['createportfolio']);
   }
-
+  
   deletePortfolio(portfolio) {
     this._service.deletePortfolio(portfolio.id)
       .subscribe((data)=> {

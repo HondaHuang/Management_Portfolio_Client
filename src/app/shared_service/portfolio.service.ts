@@ -50,6 +50,14 @@ export class PortfolioService {
     return this._http.delete(this.baseUrl+'/project/'+id,options);
   }
 
+  deletePortfolio(id:Number) {
+    return this._http.delete(this.baseUrl+'/portfolio/'+id,options);
+  }
+
+  deleteProject(id:Number) {
+    return this._http.delete(this.baseUrl+'/project/'+id,options);
+  }
+
   setter(portfolio: Portfolio) {
     this.portfolio = portfolio;
   }
