@@ -34,4 +34,13 @@ export class ListProjectComponent implements OnInit {
     this._router.navigate(['/createproject'])
   }
 
+  deleteProject(project) {
+    this._service.deleteProject(project.id)
+    .subscribe((data)=> {
+      this.projects.splice(this.projects.indexOf(project),1);
+  }, (error)=> {
+    console.log(error);
+    });
+  }
+
 }

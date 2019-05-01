@@ -29,4 +29,13 @@ addPortfolioForm: FormGroup;
     this._router.navigate(['/project']);
   }
 
+  deletePortfolio(portfolio) {
+    this._service.deletePortfolio(portfolio.id)
+      .subscribe((data)=> {
+        this.portfolios.splice(this.portfolios.indexOf(portfolio),1);
+    }, (error)=> {
+      console.log(error);
+    });
+  }
+
 }
