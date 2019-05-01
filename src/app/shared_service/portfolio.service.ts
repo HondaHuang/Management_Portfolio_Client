@@ -24,6 +24,11 @@ export class PortfolioService {
   }
 
   createProject(portfolio: Portfolio, project: Project) {
+    console.log(portfolio.id)
+    console.log(portfolio.owner)
+    console.log(portfolio.projects)
+    console.log("~~~~~~~~~~~~")
+    console.log(project)
     portfolio.projects.push(project);
     return this._http.put(this.baseUrl + '/portfolioproject', JSON.stringify(portfolio), options)
   }

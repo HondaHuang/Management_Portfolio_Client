@@ -44,7 +44,7 @@ export class CreateProjectComponent implements OnInit {
   onSubmit() {
     this.portfolioService.createProject(this.portfolios, this.addProjectForm.value)
       .subscribe( data => {
-        this.router.navigate(['list-project']);
+        this.router.navigate(['project']);
       });
   }
 

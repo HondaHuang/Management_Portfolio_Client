@@ -18,6 +18,7 @@ export class ListProjectComponent implements OnInit {
 
   ngOnInit() {
     this.portfolios = this._service.getter();
+    console.log(this.portfolios)
     this.projects = Object.assign([], this.portfolios.projects);
    // console.log(this.portfolios.projects);
     console.log("Projects");
@@ -28,8 +29,8 @@ export class ListProjectComponent implements OnInit {
     this._router.navigate(['/more'])
   }
 
-  createproject(portfolio){
-    this._service.setter(portfolio);
+  createproject(){
+    this._service.setter(this._service.getter());
     this._router.navigate(['/createproject'])
   }
 
