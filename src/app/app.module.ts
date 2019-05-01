@@ -12,12 +12,14 @@ import { PortfolioService } from './shared_service/portfolio.service';
 import { ListMoreComponent } from './components/list-more/list-more.component';
 import { CreateClientpocComponent } from './components/create-clientpoc/create-clientpoc.component';
 import { CreateProjectComponent } from './components/create-project/create-project.component';
+import { EditPortfolioComponent } from './edit-portfolio/edit-portfolio.component';
 
 const appRoutes:Routes = [
   {path:'', component:ListPortfolioComponent},
   {path:'project', component:ListProjectComponent},
   {path:'more', component:ListMoreComponent},
   {path:'createproject', component:CreateProjectComponent},
+  {path:'createportfolio', component:EditPortfolioComponent},
   {path:'createclientpoc', component:CreateClientpocComponent}
 ]
 
@@ -29,7 +31,8 @@ const appRoutes:Routes = [
     ListProjectComponent,
     ListMoreComponent,
     CreateClientpocComponent,
-    CreateProjectComponent
+    CreateProjectComponent,
+    EditPortfolioComponent
   ],
   imports: [
     BrowserModule,
