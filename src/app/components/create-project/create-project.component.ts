@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { PortfolioService } from "../../shared_service/portfolio.service";
 import { Portfolio } from 'src/app/classes/portfolio';
+import { Project } from 'src/app/classes/project';
 
 @Component({
   selector: 'app-create-project',
@@ -15,11 +16,13 @@ export class CreateProjectComponent implements OnInit {
 
   addProjectForm: FormGroup;
 
-  public portfolios:Portfolio;
+  public portfolios: Portfolio;
+  public project: Project;
 
   ngOnInit() {
 
     this.portfolios = this.portfolioService.getter();
+    this.project = this.portfolioService.getterProject();
     this.addProjectForm = this.formBuilder.group({
       id: [],
       name: ['', Validators.required],
@@ -40,12 +43,21 @@ export class CreateProjectComponent implements OnInit {
   }
 
 
-  
+
   onSubmit() {
-    this.portfolioService.createProject(this.portfolios, this.addProjectForm.value)
-      .subscribe( data => {
-        this.router.navigate(['project']);
+    if (this.project.id == undefined) {
+      this.portfolioService.createProject(this.portfolios, this.addProjectForm.value)
+        .subscribe(data => {
+          this.router.navigate(['/project']);
+        }, (error) => {
+          console.log(error);
+        });
+    } else {
+      this.portfolioService.updateProject(this.project).subscribe(data => {
+        this.router.navigate(['/project']);
       });
+    }
+
   }
 
 }

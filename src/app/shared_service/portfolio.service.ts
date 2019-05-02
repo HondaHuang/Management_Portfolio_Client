@@ -42,6 +42,10 @@ export class PortfolioService {
     return this._http.put(this.baseUrl + '/portfolio', JSON.stringify(portfolio), options);
   }
 
+  updateProject(project: Project){
+    return this._http.put(this.baseUrl + '/project', JSON.stringify(project), options);
+  }
+
   deletePortfolio(id:Number) {
     return this._http.delete(this.baseUrl+'/portfolio/'+id,options);
   }

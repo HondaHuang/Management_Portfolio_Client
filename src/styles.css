@@ -1,1 +1,24 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+   background-image: url("./assets/bgimage.jpg");
+   background-repeat: no-repeat;
+   background-size: cover;
+ }
+
+ th{
+   color: whitesmoke;
+}
+
+td{
+   color: whitesmoke;
+}
+
+h2{
+   color: whitesmoke;
+}
+
+h3{
+   color: whitesmoke;
+}
+label {
+   color: whitesmoke;
+}
