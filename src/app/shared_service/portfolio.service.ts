@@ -57,12 +57,12 @@ export class PortfolioService {
   }
 
   removeClientPOC(project: Project, clientpoc: ClientPOC) {
-    project.clientPOCs.splice(project.clientPOCs.indexOf(clientpoc));
+    project.clientPOCs.splice(project.clientPOCs.indexOf(clientpoc), 1);
     return this._http.put(this.baseUrl + '/project', JSON.stringify(project), options);
   }
 
   removeConsultant(project: Project, consultant: Consultant) {
-    project.consultants.splice(project.consultants.indexOf(consultant));
+    project.consultants.splice(project.consultants.indexOf(consultant), 1);
     return this._http.put(this.baseUrl + '/project', JSON.stringify(project), options);
   }
 

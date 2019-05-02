@@ -15,11 +15,13 @@
         <td>{{clientpoc.name}}</td>
         <td>{{clientpoc.email}}</td>
         <td>
+          <button class="btn btn-danger" (click)="removeClientPOC(clientpoc)">Remove</button>
         </td>
       </tr>
     </tbody>
   </table>
   <br>
+  <td><button class="btn btn-primary" (click)="createclientpoc()">New ClientPOC</button></td>
 </div>
 <br>
 <h2>Consultant List</h2>
@@ -38,9 +40,11 @@
         <td>{{consultant.role}}</td>
         <td>{{consultant.duration}}</td>
         <td>
+          <button class="btn btn-danger" (click)="removeConsultant(consultant)">Remove</button>
         </td>
       </tr>
     </tbody>
   </table>
   <br>
+  <td><button class="btn btn-primary" (click)="createconsultant()">New Consultant</button></td>
 </div>

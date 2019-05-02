@@ -30,13 +30,19 @@ export class ListMoreComponent implements OnInit {
     this._router.navigate(['/createclientpoc']);
   }
 
-  removeClientPOC(project, clientpoc) {
-    this._service.removeClientPOC(project, clientpoc);
-    this._router.navigate(['/more']);
+  removeClientPOC(clientpoc) {
+    this._service.removeClientPOC(this.projects, clientpoc).subscribe(data => {
+      this._router.navigateByUrl('/', { skipLocationChange: true }).then(() =>
+        this._router.navigateByUrl('/project', { skipLocationChange: true }).then(() =>
+          this._router.navigate(['/more'])))
+    });
   }
 
-  removeConsultant(project, consultant) {
-    this._service.removeConsultant(project, consultant);
-    this._router.navigate(['more']);
+  removeConsultant(consultant) {
+    this._service.removeConsultant(this.projects, consultant).subscribe(data => {
+      this._router.navigateByUrl('/', { skipLocationChange: true }).then(() =>
+        this._router.navigateByUrl('/project', { skipLocationChange: true }).then(() =>
+          this._router.navigate(['/more'])))
+    });
   }
 }
