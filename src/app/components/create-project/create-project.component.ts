@@ -17,14 +17,14 @@ export class CreateProjectComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private router: Router, private portfolioService: PortfolioService) { }
 
-  addProjectForm: FormGroup;
+  form: FormGroup;
+  error:any={isError:false,errorMessage:''};
 
   ngOnInit() {
 
     this.portfolios = this.portfolioService.getter();
     this.project = this.portfolioService.getterProject();
-    this.addProjectForm = this.formBuilder.group({
-      id: [],
+    this.form = this.formBuilder.group({
       name: ['', Validators.required],
       type: ['', Validators.required],
       start: ['', Validators.required],
@@ -42,11 +42,17 @@ export class CreateProjectComponent implements OnInit {
     });
   }
 
-
+  compareTwoDates(){
+    if(new Date(this.form.controls['end'].value)<new Date(this.form.controls['start'].value)){
+       this.error={isError:true,errorMessage:'End Date cant before start date'};
+    } else {
+      this.error={isError:false,errorMessage:'ok'};
+    }
+ }
 
   onSubmit() {
     if (this.project.id == undefined) {
-      this.portfolioService.createProject(this.portfolios, this.addProjectForm.value)
+      this.portfolioService.createProject(this.portfolios, this.form.value)
         .subscribe(data => {
           this.router.navigate(['/project']);
         }, (error) => {

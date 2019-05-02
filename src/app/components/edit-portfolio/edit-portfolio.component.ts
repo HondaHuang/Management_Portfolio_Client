@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Portfolio } from 'src/app/classes/portfolio';
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { PortfolioService } from 'src/app/shared_service/portfolio.service';
+
 import { Router } from '@angular/router';
 
 @Component({
@@ -16,10 +17,12 @@ export class EditPortfolioComponent implements OnInit {
   constructor(private _service: PortfolioService, private _router: Router) { }
 
   form = new FormGroup({
+
     name: new FormControl('', Validators.required),
     budget: new FormControl('', Validators.required),
     owner: new FormControl('', Validators.required)
 });
+
 
   ngOnInit() {
     this.portfolio = this._service.getter();
