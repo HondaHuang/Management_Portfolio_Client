@@ -1,19 +1,25 @@
 <div class="col-md-6 user-container">
   <h2 class="text-center">Add Project</h2>
-  <form [formGroup]="addProjectForm" (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <input type="hidden" formControlName="id" placeholder="id" name="id" class="form-control" id="id"
-        [(ngModel)]="project.id">
-    </div>
+  <form [formGroup]="form" (ngSubmit)="form.valid && onSubmit()">
+      <input type="hidden" name="id" class="form-control" id="id"
+        [(ngModel)]="project.id" [ngModelOptions]="{standalone:true}">
     <div class="form-group">
       <label for="name">Name:</label>
       <input type="text" formControlName="name" placeholder="name" name="name" class="form-control" id="name"
-        [(ngModel)]="project.name">
+        [(ngModel)]="project.name" [ngClass]="{'is-invalid': 
+        form.get('name').touched && form.get('name').invalid}">
+        <div class="invalid-feedback">
+          <div>Name is Required</div>
+        </div>
     </div>
 
     <div class="form-group">
       <label for="type">Type:</label>
-      <input type="text" formControlName="type" placeholder="type" name="type" class="form-control" id="type" [(ngModel)]="project.type">
+      <input type="text" formControlName="type" placeholder="type" name="type" class="form-control" id="type" [(ngModel)]="project.type"[ngClass]="{'is-invalid': 
+      form.get('type').touched && form.get('type').invalid}">
+      <div class="invalid-feedback">
+        <div>Type is Required</div>
+      </div>
     </div>
 
     <div class="form-group">
@@ -23,60 +29,110 @@
 
     <div class="form-group">
       <label for="end">End Date:</label>
-      <input type="date" formControlName="end" placeholder="end date" name="end" class="form-control" id="end" [(ngModel)]="project.end">
+      <input type="date" formControlName="end" placeholder="end date" name="end" class="form-control" id="end" [(ngModel)]="project.end" (blur)="compareTwoDates()">
     </div>
+    <div *ngIf="error.isError" class="alert alert-danger">
+        {{ error.errorMessage }}
+     </div>
 
     <div class="form-group">
       <label for="duration">Duration:</label>
       <input type="number" formControlName="duration" placeholder="duration" name="duration" class="form-control"
-        id="duration" [(ngModel)]="project.duration"> 
+        id="duration" [(ngModel)]="project.duration" [ngClass]="{'is-invalid': 
+        form.get('duration').touched && form.get('duration').invalid}">
+        <div class="invalid-feedback">
+          <div>Duration is Required</div>
+        </div> 
     </div>
 
     <div class="form-group">
       <label for="status">Status:</label>
-      <input type="text" formControlName="status" placeholder="status" name="status" class="form-control" id="status" [(ngModel)]="project.status">
+      <select formControlName="status" placeholder="status" name="status" class="form-control" id="status" [(ngModel)]="project.status" [ngClass]="{'is-invalid': 
+      form.get('status').touched && form.get('status').invalid}">
+      <option>Active</option>
+      <option>Inactive</option>
+      </select>
+      <div class="invalid-feedback">
+        <div>Status is Required</div>
+      </div>
     </div>
 
     <div class="form-group">
       <label for="methodology">Methodology:</label>
-      <input type="text" formControlName="methodology" placeholder="methodology" name="methodology" class="form-control"
-        id="methodology" [(ngModel)]="project.methodology">
+      <select type="text" formControlName="methodology" placeholder="methodology" name="methodology" class="form-control"
+        id="methodology" [(ngModel)]="project.methodology" [ngClass]="{'is-invalid': 
+        form.get('methodology').touched && form.get('methodology').invalid}">
+        <option>Agile</option>
+        <option>WaterFall</option>
+        <option>Scrum</option>
+        </select>
+        <div class="invalid-feedback">
+          <div>Methodology is Required</div>
+        </div>
     </div>
 
     <div class="form-group">
       <label for="description">Description:</label>
       <input type="textbox" formControlName="description" placeholder="description" name="description"
-        class="form-control" id="description" [(ngModel)]="project.description">
+        class="form-control" id="description" [(ngModel)]="project.description" [ngClass]="{'is-invalid': 
+        form.get('description').touched && form.get('description').invalid}">
+        <div class="invalid-feedback">
+          <div>Description is Required</div>
+        </div>
     </div>
 
     <div class="form-group">
       <label for="tools">Tools:</label>
-      <input type="text" formControlName="tools" placeholder="tools" name="tools" class="form-control" id="tools" [(ngModel)]="project.tools">
+      <input type="text" formControlName="tools" placeholder="tools" name="tools" class="form-control" id="tools" [(ngModel)]="project.tools" [ngClass]="{'is-invalid': 
+      form.get('tools').touched && form.get('tools').invalid}">
+      <div class="invalid-feedback">
+        <div>List tools seperated with (comma)</div>
+      </div>
     </div>
 
     <div class="form-group">
       <label for="pm">PM:</label>
-      <input type="text" formControlName="pm" placeholder="pm" name="pm" class="form-control" id="pm" [(ngModel)]="project.pm">
+      <input type="text" formControlName="pm" placeholder="pm" name="pm" class="form-control" id="pm" [(ngModel)]="project.pm" [ngClass]="{'is-invalid': 
+      form.get('pm').touched && form.get('pm').invalid}">
+      <div class="invalid-feedback">
+        <div>Field is Required</div>
+      </div>
     </div>
 
     <div class="form-group">
       <label for="dm">DM:</label>
-      <input type="text" formControlName="dm" placeholder="dm" name="dm" class="form-control" id="dm" [(ngModel)]="project.dm">
+      <input type="text" formControlName="dm" placeholder="dm" name="dm" class="form-control" id="dm" [(ngModel)]="project.dm" [ngClass]="{'is-invalid': 
+      form.get('dm').touched && form.get('dm').invalid}">
+      <div class="invalid-feedback">
+        <div>Field is Required</div>
+      </div>
     </div>
 
     <div class="form-group">
       <label for="client">Client:</label>
-      <input type="text" formControlName="client" placeholder="client" name="client" class="form-control" id="client" [(ngModel)]="project.client">
+      <input type="text" formControlName="client" placeholder="client" name="client" class="form-control" id="client" [(ngModel)]="project.client" [ngClass]="{'is-invalid': 
+      form.get('client').touched && form.get('client').invalid}">
+      <div class="invalid-feedback">
+        <div>Client name is Required</div>
+      </div>
     </div>
 
     <div class="form-group">
       <label for="budget">Budget:</label>
-      <input type="number" formControlName="budget" placeholder="budget" name="budget" class="form-control" id="budget" [(ngModel)]="project.budget">
+      <input type="number" formControlName="budget" placeholder="budget" name="budget" class="form-control" id="budget" [(ngModel)]="project.budget" [ngClass]="{'is-invalid': 
+      form.get('budget').touched && form.get('budget').invalid}">
+      <div class="invalid-feedback">
+        <div>Budget is Required</div>
+      </div>
     </div>
 
     <div class="form-group">
       <label for="effort">Effort:</label>
-      <input type="number" formControlName="effort" placeholder="effort" name="effort" class="form-control" id="effort" [(ngModel)]="project.effort">
+      <input type="number" formControlName="effort" placeholder="effort" name="effort" class="form-control" id="effort" [(ngModel)]="project.effort" [ngClass]="{'is-invalid': 
+      form.get('effort').touched && form.get('effort').invalid}">
+      <div class="invalid-feedback">
+        <div>Effort Level is Required</div>
+      </div>
     </div>
 
     <button class="btn btn-success">Create</button>
