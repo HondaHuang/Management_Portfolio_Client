@@ -1,0 +1,35 @@
+<div class="col-md-6 user-container">
+  <h2 class="text-center">Add Portfolio</h2>
+  <form [formGroup]="form" name="form" (ngSubmit)="form.valid && onSubmit()"> 
+
+    <input type="hidden" name="id" class="form-control" id="id" [(ngModel)]="portfolio.id" [ngModelOptions]="{standalone:true}">
+    <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" formControlName="name" placeholder="name" name="name" class="form-control" id="name" [(ngModel)]="portfolio.name" [ngClass]="{'is-invalid': 
+        form.get('name').touched && form.get('name').invalid}">
+        <div class="invalid-feedback">
+          <div>Name is Required</div>
+        </div>
+      </div>
+ 
+      <div class="form-group">
+          <label for="budget">Budget:</label>
+          <input type="number" formControlName="budget" placeholder="budget" name="budget" class="form-control" id="budget" [(ngModel)]="portfolio.budget" [ngClass]="{'is-invalid': 
+          form.get('budget').touched && form.get('budget').invalid}">
+          <div class="invalid-feedback">
+            <div>Budget Amount is Required</div>
+          </div>
+        </div>
+ 
+    <div class="form-group">
+      <label for="owner">Owner:</label>
+      <input type="text" formControlName="owner" placeholder="owner" name="owner" class="form-control" id="owner" [(ngModel)]="portfolio.owner" [ngClass]="{'is-invalid': 
+      form.get('owner').touched && form.get('owner').invalid}">
+      <div class="invalid-feedback">
+        <div>Owner name is Required</div>
+      </div>
+    </div>
+    <button class="btn btn-success">Create</button>
+  </form>
+  <br><br>
+ </div>
