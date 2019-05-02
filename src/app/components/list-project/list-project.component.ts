@@ -29,8 +29,10 @@ export class ListProjectComponent implements OnInit {
     this._router.navigate(['/more'])
   }
 
-  createproject(){
+  createProject(){
+    let project = new Project();
     this._service.setter(this._service.getter());
+    this._service.setterProject(project);
     this._router.navigate(['/createproject'])
   }
 
