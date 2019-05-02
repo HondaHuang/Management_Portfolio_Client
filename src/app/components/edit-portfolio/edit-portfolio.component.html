@@ -1,5 +1,5 @@
 <div class="col-md-6 user-container">
-  <h2 class="text-center">Add Portfolio</h2>
+
   <form [formGroup]="form" name="form" (ngSubmit)="form.valid && onSubmit()">
 
     <input type="hidden" name="id" class="form-control" id="id" [(ngModel)]="portfolio.id"
@@ -29,6 +29,7 @@
       <input type="text" formControlName="owner" placeholder="owner" name="owner" class="form-control" id="owner"
         [(ngModel)]="portfolio.owner" [ngClass]="{'is-invalid': 
         form.get('owner').touched && form.get('owner').invalid}">
+
       <div class="invalid-feedback">
         <div>Owner name is Required</div>
       </div>
@@ -36,4 +37,6 @@
     <button class="btn btn-success">Create</button>
   </form>
   <br><br>
+
 </div>
+
