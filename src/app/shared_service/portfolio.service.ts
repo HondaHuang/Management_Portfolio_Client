@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Portfolio } from '../classes/portfolio';
 import { Project } from '../classes/project';
+import { ClientPOC } from '../classes/clientpoc';
+import { Consultant } from '../classes/consultant';
 
 let headers = new HttpHeaders().set('Content-Type', 'application/json');
 let options = {
@@ -38,20 +40,30 @@ export class PortfolioService {
     return this._http.put(this.baseUrl + '/portfolioproject', JSON.stringify(portfolio), options);
   }
 
-  updatePortfolio(portfolio: Portfolio){
+  updatePortfolio(portfolio: Portfolio) {
     return this._http.put(this.baseUrl + '/portfolio', JSON.stringify(portfolio), options);
   }
 
-  updateProject(project: Project){
+  updateProject(project: Project) {
     return this._http.put(this.baseUrl + '/project', JSON.stringify(project), options);
   }
 
-  deletePortfolio(id:Number) {
-    return this._http.delete(this.baseUrl+'/portfolio/'+id,options);
+  deletePortfolio(id: Number) {
+    return this._http.delete(this.baseUrl + '/portfolio/' + id, options);
   }
 
-  deleteProject(id:Number) {
-    return this._http.delete(this.baseUrl+'/project/'+id,options);
+  deleteProject(id: Number) {
+    return this._http.delete(this.baseUrl + '/project/' + id, options);
+  }
+
+  removeClientPOC(project: Project, clientpoc: ClientPOC) {
+    project.clientPOCs.splice(project.clientPOCs.indexOf(clientpoc));
+    return this._http.put(this.baseUrl + '/project', JSON.stringify(project), options);
+  }
+
+  removeConsultant(project: Project, consultant: Consultant) {
+    project.consultants.splice(project.consultants.indexOf(consultant));
+    return this._http.put(this.baseUrl + '/project', JSON.stringify(project), options);
   }
 
   setter(portfolio: Portfolio) {

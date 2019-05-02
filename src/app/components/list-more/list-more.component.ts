@@ -16,7 +16,7 @@ export class ListMoreComponent implements OnInit {
   public clientpocs: ClientPOC[];
   public consultants: Consultant[];
 
-  constructor(private _service:PortfolioService, private _router:Router) { }
+  constructor(private _service: PortfolioService, private _router: Router) { }
 
   ngOnInit() {
     this.projects = this._service.getterProject();
@@ -25,9 +25,18 @@ export class ListMoreComponent implements OnInit {
     console.log(this.projects);
   }
 
-  createclientpoc(project){
+  createclientpoc(project) {
     this._service.setterProject(project);
-    this._router.navigate(['/createclientpoc'])
+    this._router.navigate(['/createclientpoc']);
   }
 
+  removeClientPOC(project, clientpoc) {
+    this._service.removeClientPOC(project, clientpoc);
+    this._router.navigate(['/more']);
+  }
+
+  removeConsultant(project, consultant) {
+    this._service.removeConsultant(project, consultant);
+    this._router.navigate(['more']);
+  }
 }
