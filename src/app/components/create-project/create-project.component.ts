@@ -12,12 +12,12 @@ import { Project } from 'src/app/classes/project';
 })
 export class CreateProjectComponent implements OnInit {
 
+  public portfolios: Portfolio;
+  public project: Project;
+  
   constructor(private formBuilder: FormBuilder, private router: Router, private portfolioService: PortfolioService) { }
 
   addProjectForm: FormGroup;
-
-  public portfolios: Portfolio;
-  public project: Project;
 
   ngOnInit() {
 
