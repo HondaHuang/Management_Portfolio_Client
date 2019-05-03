@@ -17,6 +17,8 @@ export class PortfolioService {
   private baseUrl: string = 'http://localhost:8400/api';
   public portfolio = new Portfolio();
   public project = new Project();
+  public clientpoc = new ClientPOC();
+  public consultant = new Consultant();
 
   constructor(private _http: HttpClient) { }
 
@@ -80,6 +82,22 @@ export class PortfolioService {
 
   getterProject() {
     return this.project;
+  }
+
+  setterClientpoc(clientpoc: ClientPOC) {
+    this.clientpoc = clientpoc;
+  }
+
+  getterClientpoc() {
+    return this.clientpoc;
+  }
+
+  setterConsultant(consultant: Consultant) {
+    this.consultant = consultant;
+  }
+
+  getterConsultant() {
+    return this.consultant;
   }
 
 }

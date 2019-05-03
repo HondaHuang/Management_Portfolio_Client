@@ -1,3 +1,20 @@
-<p>
-  create-clientpoc works!
-</p>
+<div class="col-md-6 user-container">
+  <h2 class="text-center">Add ClientPOC to {{project.name}}</h2>
+  <form [formGroup]="form" (ngSubmit)="form.valid && onSubmit()">
+
+    <div class="form-group">
+      <label for="clientpoc">ClientPOC:</label>
+      <select type="text" formControlName="clientpoc" placeholder="clientpoc" name="clientpoc" class="form-control"
+        id="clientpoc" [(ngModel)]="addclientpoc" [ngClass]="{'is-invalid': 
+        form.get('clientpoc').touched && form.get('clientpoc').invalid}">
+        <option *ngFor="let clientpoc of clientpocs" [[ngValue]]="clientpoc.name">{{clientpoc.name}}</option>
+      </select>
+      <div class="invalid-feedback">
+        <div>ClientPOC must be selected</div>
+      </div>
+    </div>
+
+    <button class="btn btn-success">Add to Project</button>
+  </form>
+  <br><br>
+</div>
